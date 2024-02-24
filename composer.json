@@ -29,12 +29,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.x-dev"
-        },
-        "laravel": {
-            "providers": [
-                "SavioVarsalle\\LaravelGissOnline\\GissOnlineServiceProvider"
-            ]
+            "dev-master": "1.0.1"
         }
     },
     "config": {
