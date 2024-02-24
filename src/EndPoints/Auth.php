@@ -15,8 +15,8 @@ class Auth
     public function __construct()
     {
         $this->service  = new GissOnline;
-        $this->username = config('gissonline.username', '67499872653');
-        $this->password = config('gissonline.password', 'G54QU8XD');
+        $this->username = env('GISS_USERNAME');
+        $this->password = env('GISS_PASSWORD');
     }
 
     public function token()

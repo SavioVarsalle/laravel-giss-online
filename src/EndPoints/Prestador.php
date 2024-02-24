@@ -17,7 +17,7 @@ class Prestador
     public function __construct(array $data)
     {
         $this->service      = new GissOnline;
-        $this->codMunicipio = config('gissonline.cod_municipio', '');
+        $this->codMunicipio = env('GISS_COD_MUNICIPIO_PRESTADOR');
         $this->idEmpresa    = data_get($data, 'idEmpresa', '') ;
         $this->token        = data_get($data, 'token', '');
     }

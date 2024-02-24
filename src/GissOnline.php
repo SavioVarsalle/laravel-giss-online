@@ -11,7 +11,7 @@ class GissOnline
 
     public function __construct()
     {
-        $codMunicipioprestador = config('gissonline.cod_municipio', '3143906');
+        $codMunicipioprestador = env('GISS_COD_MUNICIPIO_PRESTADOR');
 
         $this->api = new Client([
             'base_url' => "https://gissv2-{$codMunicipioprestador}.giss.com.br/"
