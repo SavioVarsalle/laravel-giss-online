@@ -1,0 +1,44 @@
+{
+    "name": "savio.varsalle/laravel-giss-online",
+    "description": "Serviço de comunicação via api com a plataforma do GissOnline.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SavioVarsalle\\LaravelGissOnline\\": "src/"
+        },
+        "files": [
+            "vendor/autoload.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Savio Varsalle",
+            "email": "savio.varsalle@live.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support":  "^9.21|^10.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "3.x-dev"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "SavioVarsalle\\LaravelGissOnline\\GissOnlineServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    }
+}
