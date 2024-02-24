@@ -24,7 +24,7 @@ class Tomador
 
     public function get()
     {
-        $response = $this->service->api->request('GET', "service-empresa/api/empresa/{$this->codMunicipio}/{$this->idEmpresa}", [
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/empresa/{$this->codMunicipio}/{$this->idEmpresa}", [
             'headers' => [
                 'Accept'        => 'application/json, text/plain, */*',
                 'Accept-Encoding' => 'gzip, deflate, br, zstd',

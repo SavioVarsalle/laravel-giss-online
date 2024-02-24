@@ -4,6 +4,7 @@ use Illuminate\Container\Container;
 
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Contracts\Broadcasting\Factory as BroadcastFactory;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\HtmlString;
 
@@ -221,6 +222,20 @@ if (! function_exists('lang_path')) {
     function lang_path($path = '')
     {
         return app()->langPath($path);
+    }
+}
+
+if (! function_exists('env')) {
+    /**
+     * Gets the value of an environment variable.
+     *
+     * @param  string  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    function env($key, $default = null)
+    {
+        return Env::get($key, $default);
     }
 }
 

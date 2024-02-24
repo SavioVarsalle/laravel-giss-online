@@ -4,30 +4,27 @@ namespace SavioVarsalle\LaravelGissOnline\EndPoints;
 
 use SavioVarsalle\LaravelGissOnline\GissOnline;
 
-class Prestador
+class MotivoCancelamento
 {
     private GissOnline $service;
 
-    private $codMunicipio;
-
-    private $idEmpresa;
-
     private $token;
+
+    private $codMunicipio;
 
     public function __construct(array $data)
     {
-        $this->service      = new GissOnline;
+        $this->service = new GissOnline;
+        $this->token = data_get($data, 'token');
         $this->codMunicipio = env('GISS_COD_MUNICIPIO_PRESTADOR');
-        $this->idEmpresa    = data_get($data, 'idEmpresa', '') ;
-        $this->token        = data_get($data, 'token', '');
     }
 
-    public function get()
+    public function list()
     {
-        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/empresa/{$this->codMunicipio}/{$this->idEmpresa}", [
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-cliente/api/motivo-cancelamento/listar/{$this->codMunicipio}", [
             'headers' => [
                 'Accept'        => 'application/json, text/plain, */*',
-                'Accept-Encoding' => 'gzip, deflate, br, zstd',
+                'Accept-Encoding' => 'gzip, deflate, br',
                 'Authorization' => 'Bearer ' . $this->token
             ],
         ]);
