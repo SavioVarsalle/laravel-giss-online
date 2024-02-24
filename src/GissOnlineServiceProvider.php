@@ -2,8 +2,12 @@
 
 namespace SavioVarsalle\LaravelGissOnline;
 
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-class GissOnlineServiceProvider
+
+class GissOnlineServiceProvider extends ServiceProvider
 {
     /**
          * Register services.
@@ -24,6 +28,8 @@ class GissOnlineServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/gissonline.php' => config_path('gissonline.php'),
+        ], 'gissonline-config');
     }
 }

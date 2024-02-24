@@ -7,7 +7,7 @@
             "SavioVarsalle\\LaravelGissOnline\\": "src/"
         },
         "files": [
-            "vendor/autoload.php"
+            "src/helpers.php"
         ]
     },
     "authors": [
@@ -20,7 +20,9 @@
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.0",
-        "illuminate/support":  "^9.21|^10.0"
+        "illuminate/config": "^9.21|^10.0",
+        "illuminate/container": "^9.21|^10.0",
+        "illuminate/support": "^9.21|^10.0"
     },
     "require-dev": {
         "pestphp/pest": "3.x-dev"
