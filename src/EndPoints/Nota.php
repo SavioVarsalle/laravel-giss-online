@@ -34,7 +34,8 @@ class Nota
     private $notaNumero;
     private $idMotivoCancelamento;
     private $idNota;
-    private $localDownload;
+    private $serie;
+    private $rps;
 
     public function __construct(array $data)
     {
@@ -65,7 +66,8 @@ class Nota
         $this->notaNumero = data_get($data, 'notaNumero');
         $this->idMotivoCancelamento = data_get($data, 'idMotivoCancelamento');
         $this->idNota = data_get($data, 'idNota');
-        $this->localDownload = data_get($data, 'localDownload');
+        $this->serie = data_get($data, 'serie');
+        $this->rps = data_get($data, 'rps');
     }
 
     public function emitir()
@@ -99,7 +101,9 @@ class Nota
                 'cofins'                => $this->cofins,
                 'ir'                    => $this->ir,
                 'inss'                  => $this->inss,
-                'csll'                  => $this->csll
+                'csll'                  => $this->csll,
+                'serie'                 => $this->serie,
+                'rps'                   => $this->rps
             ]
         ]);
 
@@ -187,13 +191,7 @@ class Nota
             ],
         ]);
 
-        $file = $response->getBody()->getContents();
-
-        $local = "{$this->localDownload}{$this->idNota}.pdf";
-
-        file_put_contents($local, $file);
-
-        return $response->getStatusCode();
+        return $response->getBody()->getContents();
     }
 
     public function getXml()
@@ -206,12 +204,6 @@ class Nota
             ],
         ]);
 
-        $file = $response->getBody()->getContents();
-
-        $local = "{$this->localDownload}{$this->idNota}.xml";
-
-        file_put_contents($local, $file);
-
-        return $response->getStatusCode();
+        return $response->getBody()->getContents();
     }
 }

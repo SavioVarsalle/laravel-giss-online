@@ -70,6 +70,36 @@ GISS_PASSWORD=
     dump($tomador);
 
     /**
+     * Realiza o cadastro do Tomador(O Cliente)
+     */
+    $cadastro = $service->tomador([
+        'token' => $token->access_token,
+        'apelido'   => 'João',
+        'cnpjCpf'   => '11111111111',
+        'email' => 'email@email.com',
+        'bairro' => 'bairro',
+        'cep' => '00000000',
+        'cidade' => 'cidade',
+        'complemento' => 'complemento',
+        'estado' => 'estado',
+        'idIbge' => 000000,
+        'idUfIbge' => 'MG',
+        'logradouro' => 'logradouro',
+        'numero' => '100',
+        'tipoLogradouro' => 'RUA',
+        'exterior' => false,
+        'idEmpresa' => 'idEmpresa',//Id da empresa emitente da nota
+        'nomeFantasia' => 'nomeFantasia',
+        'razaoSocial' => 'razaoSocial',
+        'inscricaoEstadual' =>  'inscricaoEstadual',
+        'inscricaoMunicipal' => 'inscricaoMunicipal',
+        'codigoArea' => 32,
+        'telefone' => '999999999',
+        'mei' => false
+    ])->create();
+    dump($cadastro);
+
+    /**
      * Realiza a emissão da Nota
      */
     $nota = $service->nota([
