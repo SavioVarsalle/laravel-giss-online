@@ -104,7 +104,7 @@ GISS_PASSWORD=
     $pdfDownload = $service->nota([
         'token' => $token->access_token,
         'idNota' => $nota->conteudo->idNota,
-        'localDownload' => '/home/dev2/Projects/MLC'
+        'localDownload' => '/home/dev2/Projects/MLC/'
     ])->getPdf();
     dump($pdfDownload);
 
@@ -114,7 +114,7 @@ GISS_PASSWORD=
     $xmlDownload = $service->nota([
         'token' => $token->access_token,
         'idNota' => $nota->conteudo->idNota,
-        'localDownload' => '/home/dev2/Projects/MLC'
+        'localDownload' => '/home/dev2/Projects/MLC/'
     ])->getXml();
     dump($pdfDownload);
 
@@ -130,11 +130,11 @@ GISS_PASSWORD=
      * Cancelar a Nota
      */
     $cancelar = $service->nota([
-        'token'                 =>  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NjI3IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiNjc0OTk4NzI2NTMiLCJJUEFERFJFU1MiOiIxMC4yNi41LjEyIiwiVUlQX0lEIjoiNTI4ZjkyZTEtMWVjNi00MTc4LTlhMWMtMmRjMGUzOTYwMDQ3IiwiQ0NUT0tFTiI6IiIsIm5iZiI6MTcwODgwNDA1NCwiZXhwIjoxNzA4ODMyOTE0LCJpc3MiOiJodHRwOi8vd3d3LmNvZGVjaXBoZXJzLmNvbSIsImF1ZCI6WyJodHRwOi8vd3d3LmNvZGVjaXBoZXJzLmNvbSIsImh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIl0sIkFQUF9JRCI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIlBBUkFNX0xPR0lOIjoiW3tcImlkXCI6MixcInRpcG9cIjpcIkNvZENsaWVudGVcIixcImNoYXZlXCI6XCIwMDAwMlwiLFwidmFsb3JcIjpcIlByZWZlaXR1cmEgZGUgTXVyaWHDqVwifV0iLCJQQVJBTV9QUklWIjoiZW1wcmVzYT0yNTk5MDYifQ.QdD83u109bIIAN3AKWE0fas9dcdrzFRHd9oxTi1zYEw",
-        'idEmpresa'             =>  259906,
-        'notaTipo'              => 1,
-        'notaNumero'            => 7243,
-        'idMotivoCancelamento'  => 9
+        'token'                 =>  $token->access_token,
+        'idEmpresa'             =>  $token->idEmpresa,
+        'notaTipo'              => $nota->conteudo->notaTipo,
+        'notaNumero'            => $nota->conteudo->numero,
+        'idMotivoCancelamento'  => $motivoCancelamento->conteudo[3]->idMotivoCancelamento
     ])->cancelar();
     dump($cancelar);
 ```
