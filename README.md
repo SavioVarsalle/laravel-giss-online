@@ -91,13 +91,48 @@ GISS_PASSWORD=
         'idEmpresa' => 'idEmpresa',//Id da empresa emitente da nota
         'nomeFantasia' => 'nomeFantasia',
         'razaoSocial' => 'razaoSocial',
+        'simplesNacional' => false,
+        'inscricaoEstadual' =>  'inscricaoEstadual',
+        'inscricaoMunicipal' => 'inscricaoMunicipal',
+        'codigoArea' => 32,
+        'telefone' => '999999999',
+        'mei' => false,
+        'ativo' => true
+    ])->create();
+    dump($cadastro);
+
+    /**
+     * edita o cadastro do Tomador(O Cliente)
+     */
+    $editar = $service->tomador([
+        'token' => $token->access_token,
+        'idTomador' => 11111,
+        'ativo' => true,
+        'apelido'   => 'João',
+        'cnpjCpf'   => '11111111111',
+        'email' => 'email@email.com',
+        'bairro' => 'bairro',
+        'cep' => '00000000',
+        'cidade' => 'cidade',
+        'complemento' => 'complemento',
+        'estado' => 'estado',
+        'idIbge' => 000000,
+        'idUfIbge' => 'MG',
+        'logradouro' => 'logradouro',
+        'numero' => '100',
+        'tipoLogradouro' => 'RUA',
+        'exterior' => false,
+        'idEmpresa' => 'idEmpresa',//Id da empresa emitente da nota
+        'nomeFantasia' => 'nomeFantasia',
+        'razaoSocial' => 'razaoSocial',
+        'simplesNacional' => false,
         'inscricaoEstadual' =>  'inscricaoEstadual',
         'inscricaoMunicipal' => 'inscricaoMunicipal',
         'codigoArea' => 32,
         'telefone' => '999999999',
         'mei' => false
-    ])->create();
-    dump($cadastro);
+    ])->update();
+    dump($editar);
 
     /**
      * Realiza a emissão da Nota
