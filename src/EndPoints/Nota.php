@@ -144,6 +144,36 @@ class Nota
         return json_decode($response->getBody()->getContents());
     }
 
+    public function get()
+    {
+        $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-declaracao/api/nota/consulta-paged", [
+            'headers' => [
+                'Accept'            => 'application/json, text/plain, */*',
+                'Accept-Encoding'   => 'gzip, deflate, br, zstd',
+                'Authorization'     => 'Bearer ' . $this->token,
+                'Content-Type'      => 'application/json;charset=UTF-8'
+            ],
+            'json' => [
+                'idCliente' => $this->codMunicipio,
+                'idEmpresa' => $this->idEmpresa,
+                'tipoEmpresa'      => 1,
+                'numero'    => $this->notaNumero,
+            ]
+        ]);
+
+        $dadoConsulta = json_decode($response->getBody()->getContents());
+
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-declaracao/api/nota/{$this->codMunicipio}/{$dadoConsulta->conteudo->notas->content->idNota}", [
+            'headers' => [
+                'Accept'            => 'application/json, text/plain, */*',
+                'Accept-Encoding'   => 'gzip, deflate, br',
+                'Authorization'     => 'Bearer ' . $this->token
+            ],
+        ]);
+
+        return json_decode($response->getBody()->getContents());
+    }
+
     public function getPdf()
     {
         $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-relatorio/api/relatorio/pdf/{$this->codMunicipio}/nota/{$this->idNota}", [
