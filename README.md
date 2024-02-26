@@ -101,6 +101,18 @@ GISS_PASSWORD=
     dump($nota);
 
     /**
+     * Consulta e retorna os dados da nota
+     */
+    $consulta = $service->nota([
+        'token'                 =>  $token->access_token,
+        'idEmpresa'             =>  $token->idEmpresa,
+        'notaNumero'            =>  $nota->conteudo->numero,
+     
+    ])->get();
+    dump($consulta);
+     
+
+    /**
      * Realiza o download do PDF no local designado
      */
     $pdfDownload = $service->nota([
