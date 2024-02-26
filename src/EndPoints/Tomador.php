@@ -81,24 +81,8 @@ class Tomador
                 ],
             ]);
 
-            if ($response->getStatusCode() != 200) {
-                return json_decode($response->getBody()->getContents());
-            }
-
-            $dadosBasicos = json_decode($response->getBody()->getContents());
-            
-            $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/empresa/endereco/{$this->codMunicipio}/{$dadosBasicos->conteudo[0]->id}", [
-                'headers' => [
-                    'Accept'        => 'application/json, text/plain, */*',
-                    'Accept-Encoding' => 'gzip, deflate, br, zstd',
-                    'Authorization' => 'Bearer ' . $this->token
-                ],
-            ]);
-            
             if ($response->getStatusCode() >= 200) {
                 return json_decode($response->getBody()->getContents());
-            } else {
-                return "Erro na requisição";
             }
         } catch (RequestException $e) {
             return "Erro na requisição: " . $e->getMessage();
