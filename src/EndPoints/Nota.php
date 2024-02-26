@@ -154,16 +154,19 @@ class Nota
                 'Content-Type'      => 'application/json;charset=UTF-8'
             ],
             'json' => [
-                'idCliente' => $this->codMunicipio,
-                'idEmpresa' => $this->idEmpresa,
-                'tipoEmpresa'      => 1,
-                'numero'    => $this->notaNumero,
+                'idCliente'     => $this->codMunicipio,
+                'idEmpresa'     => $this->idEmpresa,
+                'tipoEmpresa'   => 1,
+                'modalidade'    => 1,
+                'tipoConsulta'  => 3,
+                'issqnRetido'   => 3,
+                'numeroNota'    => $this->notaNumero,
             ]
         ]);
 
         $dadoConsulta = json_decode($response->getBody()->getContents());
 
-        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-declaracao/api/nota/{$this->codMunicipio}/{$dadoConsulta->conteudo->notas->content->idNota}", [
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-declaracao/api/nota/{$this->codMunicipio}/{$dadoConsulta->conteudo->notas->content[0]->idNota}", [
             'headers' => [
                 'Accept'            => 'application/json, text/plain, */*',
                 'Accept-Encoding'   => 'gzip, deflate, br',
