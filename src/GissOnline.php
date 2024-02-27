@@ -3,13 +3,7 @@
 namespace SavioVarsalle\LaravelGissOnline;
 
 use GuzzleHttp\Client;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Auth;
-use SavioVarsalle\LaravelGissOnline\EndPoints\MotivoCancelamento;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Nota;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Prestador;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Servico;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Tomador;
-use SavioVarsalle\LaravelGissOnline\EndPoints\Usuario;
+use SavioVarsalle\LaravelGissOnline\EndPoints\{Auth, MotivoCancelamento, Nota, Prestador, Servico, Tomador, Usuario};
 
 class GissOnline
 {
@@ -20,9 +14,9 @@ class GissOnline
         $this->api = new Client();
     }
 
-    public function auth()
+    public function auth(array $data = [])
     {
-        return new Auth;
+        return new Auth($data);
     }
 
     public function prestador(array $data)

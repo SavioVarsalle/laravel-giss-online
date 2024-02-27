@@ -16,16 +16,18 @@
             "email": "savio.varsalle@live.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": "^8.0",
-        "guzzlehttp/guzzle": "^7.0",
-        "illuminate/config": "^9.21|^10.0",
-        "illuminate/container": "^9.21|^10.0",
-        "illuminate/support": "^9.21|^10.0"
-    },
+    "minimum-stability": "stable",
     "require-dev": {
-        "pestphp/pest": "3.x-dev"
+        "php": "^8.0",
+        "fakerphp/faker": "^1.9.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.10",
+        "laravel/pint": "^1.0",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "pestphp/pest": "^2.34",
+        "phpunit/phpunit": "^10.1",
+        "spatie/laravel-ignition": "^2.0"
     },
     "extra": {
         "branch-alias": {
