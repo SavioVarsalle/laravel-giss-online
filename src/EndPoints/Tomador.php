@@ -72,142 +72,121 @@ class Tomador
 
     public function get()
     {
-        try {
-            $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/tomador/{$this->codMunicipio}/{$this->idEmpresa}/tipo/1/cliente/2024-02-23?parametro={$this->cnpjCpf}", [
-                'headers' => [
-                    'Accept'        => 'application/json, text/plain, */*',
-                    'Accept-Encoding' => 'gzip, deflate, br, zstd',
-                    'Authorization' => 'Bearer ' . $this->token
-                ],
-            ]);
+      
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/tomador/{$this->codMunicipio}/{$this->idEmpresa}/tipo/1/cliente/2024-02-23?parametro={$this->cnpjCpf}", [
+            'headers' => [
+                'Accept'        => 'application/json, text/plain, */*',
+                'Accept-Encoding' => 'gzip, deflate, br, zstd',
+                'Authorization' => 'Bearer ' . $this->token
+            ],
+        ]);
 
-            if ($response->getStatusCode() >= 200) {
-                return json_decode($response->getBody()->getContents());
-            }
-        } catch (RequestException $e) {
-            return "Erro na requisição: " . $e->getMessage();
-        }
+        return json_decode($response->getBody()->getContents());
     }
 
     public function create()
     {
-        try {
-            $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/", [
-                'headers' => [
-                    'Accept'        => 'application/json, text/plain, */*',
-                    'Accept-Encoding' => 'gzip, deflate, br, zstd',
-                    'Authorization' => 'Bearer ' . $this->token,
-                    'Content-Type' => 'application/json;charset=UTF-8'
+        $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/", [
+            'headers' => [
+                'Accept'        => 'application/json, text/plain, */*',
+                'Accept-Encoding' => 'gzip, deflate, br, zstd',
+                'Authorization' => 'Bearer ' . $this->token,
+                'Content-Type' => 'application/json;charset=UTF-8'
+            ],
+            'json' => [
+                'alterado'  => true,
+                'apelido'   => $this->apelido,
+                'documento' => $this->cnpjCpf,
+                'email'   => [
+                    'alterado' => true,
+                    'email' => $this->email
                 ],
-                'json' => [
-                    'alterado'  => true,
-                    'apelido'   => $this->apelido,
-                    'documento' => $this->cnpjCpf,
-                    'email'   => [
-                        'alterado' => true,
-                        'email' => $this->email
-                    ],
-                    'endereco' => [
-                        'alterado' => true,
-                        'bairro' => $this->bairro,
-                        'cep' => $this->cep,
-                        'cidade' => $this->cidade,
-                        'complemento' => $this->complemento,
-                        'estado' => $this->estado,
-                        'idIbge' => $this->idIbge,
-                        'idUfIbge' => $this->idUfIbge,
-                        'logradouro' => $this->logradouro,
-                        'numero' => $this->numero,
-                        'tipoLogradouro' => $this->tipoLogradouro
-                    ],
-                    'exterior' => $this->exterior,
-                    'idCliente' => $this->codMunicipio,
-                    'idEmpresa' => $this->idEmpresa,
-                    'nomeFantasia' => $this->nomeFantasia,
-                    'razaoSocial' => $this->razaoSocial,
-                    'simplesNacional' => $this->simplesNacional,
-                    'inscricaoEstadual' =>  $this->inscricaoEstadual,
-                    'inscricaoMunicipal' => $this->inscricaoMunicipal,
-                    'telefone' => [
-                        'alterado' => true,
-                        'codigoArea' => $this->codigoArea,
-                        'telefone' => $this->telefone
-                    ],
-                    'mei' => $this->mei,
-                    'tipo' => 1,
-                    'tipoEmpresa' => '1',
-                    'ativo' => $this->ativo
-                ]
-            ]);
+                'endereco' => [
+                    'alterado' => true,
+                    'bairro' => $this->bairro,
+                    'cep' => $this->cep,
+                    'cidade' => $this->cidade,
+                    'complemento' => $this->complemento,
+                    'estado' => $this->estado,
+                    'idIbge' => $this->idIbge,
+                    'idUfIbge' => $this->idUfIbge,
+                    'logradouro' => $this->logradouro,
+                    'numero' => $this->numero,
+                    'tipoLogradouro' => $this->tipoLogradouro
+                ],
+                'exterior' => $this->exterior,
+                'idCliente' => $this->codMunicipio,
+                'idEmpresa' => $this->idEmpresa,
+                'nomeFantasia' => $this->nomeFantasia,
+                'razaoSocial' => $this->razaoSocial,
+                'simplesNacional' => $this->simplesNacional,
+                'inscricaoEstadual' =>  $this->inscricaoEstadual,
+                'inscricaoMunicipal' => $this->inscricaoMunicipal,
+                'telefone' => [
+                    'alterado' => true,
+                    'codigoArea' => $this->codigoArea,
+                    'telefone' => $this->telefone
+                ],
+                'mei' => $this->mei,
+                'tipo' => 1,
+                'tipoEmpresa' => '1',
+                'ativo' => $this->ativo
+            ]
+        ]);
 
-            if ($response->getStatusCode() >= 200) {
-                return json_decode($response->getBody()->getContents());
-            } else {
-                return "Erro na requisição";
-            }
-        } catch (RequestException $e) {
-            return "Erro na requisição: " . $e->getMessage();
-        }
+        return json_decode($response->getBody()->getContents());
     }
     public function update()
     {
-        try {
-            $response = $this->service->api->request('PUT', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/", [
-                'headers' => [
-                    'Accept'        => 'application/json, text/plain, */*',
-                    'Accept-Encoding' => 'gzip, deflate, br, zstd',
-                    'Authorization' => 'Bearer ' . $this->token,
-                    'Content-Type' => 'application/json;charset=UTF-8'
+        $response = $this->service->api->request('PUT', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/", [
+            'headers' => [
+                'Accept'        => 'application/json, text/plain, */*',
+                'Accept-Encoding' => 'gzip, deflate, br, zstd',
+                'Authorization' => 'Bearer ' . $this->token,
+                'Content-Type' => 'application/json;charset=UTF-8'
+            ],
+            'json' => [
+                'alterado'  => true,
+                'id' => $this->idTomador,
+                'ativo' => $this->ativo,
+                'apelido'   => $this->apelido,
+                'documento' => $this->cnpjCpf,
+                'email'   => [
+                    'alterado' => true,
+                    'email' => $this->email
                 ],
-                'json' => [
-                    'alterado'  => true,
-                    'id' => $this->idTomador,
-                    'ativo' => $this->ativo,
-                    'apelido'   => $this->apelido,
-                    'documento' => $this->cnpjCpf,
-                    'email'   => [
-                        'alterado' => true,
-                        'email' => $this->email
-                    ],
-                    'endereco' => [
-                        'alterado' => true,
-                        'bairro' => $this->bairro,
-                        'cep' => $this->cep,
-                        'cidade' => $this->cidade,
-                        'complemento' => $this->complemento,
-                        'estado' => $this->estado,
-                        'idIbge' => $this->idIbge,
-                        'idUfIbge' => $this->idUfIbge,
-                        'logradouro' => $this->logradouro,
-                        'numero' => $this->numero,
-                        'tipoLogradouro' => $this->tipoLogradouro
-                    ],
-                    'exterior' => $this->exterior,
-                    'idCliente' => $this->codMunicipio,
-                    'idEmpresa' => $this->idEmpresa,
-                    'nomeFantasia' => $this->nomeFantasia,
-                    'razaoSocial' => $this->razaoSocial,
-                    'simplesNacional' => $this->simplesNacional,
-                    'inscricaoEstadual' =>  $this->inscricaoEstadual,
-                    'inscricaoMunicipal' => $this->inscricaoMunicipal,
-                    'telefone' => [
-                        'alterado' => true,
-                        'codigoArea' => $this->codigoArea,
-                        'telefone' => $this->telefone
-                    ],
-                    'mei' => $this->mei,
-                    'tipo' => 1,
-                    'tipoEmpresa' => '1'
-                ]
-            ]);
+                'endereco' => [
+                    'alterado' => true,
+                    'bairro' => $this->bairro,
+                    'cep' => $this->cep,
+                    'cidade' => $this->cidade,
+                    'complemento' => $this->complemento,
+                    'estado' => $this->estado,
+                    'idIbge' => $this->idIbge,
+                    'idUfIbge' => $this->idUfIbge,
+                    'logradouro' => $this->logradouro,
+                    'numero' => $this->numero,
+                    'tipoLogradouro' => $this->tipoLogradouro
+                ],
+                'exterior' => $this->exterior,
+                'idCliente' => $this->codMunicipio,
+                'idEmpresa' => $this->idEmpresa,
+                'nomeFantasia' => $this->nomeFantasia,
+                'razaoSocial' => $this->razaoSocial,
+                'simplesNacional' => $this->simplesNacional,
+                'inscricaoEstadual' =>  $this->inscricaoEstadual,
+                'inscricaoMunicipal' => $this->inscricaoMunicipal,
+                'telefone' => [
+                    'alterado' => true,
+                    'codigoArea' => $this->codigoArea,
+                    'telefone' => $this->telefone
+                ],
+                'mei' => $this->mei,
+                'tipo' => 1,
+                'tipoEmpresa' => '1'
+            ]
+        ]);
 
-            if ($response->getStatusCode() >= 200) {
-                return json_decode($response->getBody()->getContents());
-            } else {
-                return "Erro na requisição";
-            }
-        } catch (RequestException $e) {
-            return "Erro na requisição: " . $e->getMessage();
-        }
+        return json_decode($response->getBody()->getContents());
     }
 }
