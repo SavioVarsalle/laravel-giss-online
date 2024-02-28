@@ -2,7 +2,7 @@
 
 use SavioVarsalle\LaravelGissOnline\GissOnline;
 
-/*
+
 test('Deve retornar o bearer token e o id da empresa.', function () {
     $service = new GissOnline;
 
@@ -20,7 +20,7 @@ test('Deve cadastrar o cliente CNPJ, retornar o codigo http 200 e os dados de ca
     $service = new GissOnline();
 
     $cadastroCNPJ = $service->tomador([
-        'token'                        => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NjI3IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiNjc0OTk4NzI2NTMiLCJJUEFERFJFU1MiOiIxMC4yNi4xNi4xOTciLCJVSVBfSUQiOiI1MjhmOTJlMS0xZWM2LTQxNzgtOWExYy0yZGMwZTM5NjAwNDciLCJDQ1RPS0VOIjoiIiwibmJmIjoxNzA5MDQ1MTMzLCJleHAiOjE3MDkwNzM5OTMsImlzcyI6Imh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiYXVkIjpbImh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iXSwiQVBQX0lEIjoiMzg0OGFhMjctNmY2Yy0zYjUyLTMxN2MtZDE3MDA5ZDlhYmZkIiwiUEFSQU1fTE9HSU4iOiJbe1wiaWRcIjoyLFwidGlwb1wiOlwiQ29kQ2xpZW50ZVwiLFwiY2hhdmVcIjpcIjAwMDAyXCIsXCJ2YWxvclwiOlwiUHJlZmVpdHVyYSBkZSBNdXJpYcOpXCJ9XSIsIlBBUkFNX1BSSVYiOiJlbXByZXNhPTI1OTkwNiJ9.tQCo0jdh2zioP34oMnveQxICxlpkPOIdeU-18pG4504",
+        'token'                        => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NjI3IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiNjc0OTk4NzI2NTMiLCJJUEFERFJFU1MiOiIxMC4yNi4xNi4xOTciLCJVSVBfSUQiOiI1MjhmOTJlMS0xZWM2LTQxNzgtOWExYy0yZGMwZTM5NjAwNDciLCJDQ1RPS0VOIjoiIiwibmJmIjoxNzA5MTEwNzk2LCJleHAiOjE3MDkxMzk2NTYsImlzcyI6Imh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiYXVkIjpbImh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iXSwiQVBQX0lEIjoiMzg0OGFhMjctNmY2Yy0zYjUyLTMxN2MtZDE3MDA5ZDlhYmZkIiwiUEFSQU1fTE9HSU4iOiJbe1wiaWRcIjoyLFwidGlwb1wiOlwiQ29kQ2xpZW50ZVwiLFwiY2hhdmVcIjpcIjAwMDAyXCIsXCJ2YWxvclwiOlwiUHJlZmVpdHVyYSBkZSBNdXJpYcOpXCJ9XSIsIlBBUkFNX1BSSVYiOiJlbXByZXNhPTI1OTkwNiJ9.rTNqMUJowdaxZliK6-rgcLqbFhgDyTRhV9NFBn7ri0M',
         'exterior'                     => false,
         'cep'                          => '36700052',
         'estado'                       => 'MG',
@@ -72,8 +72,18 @@ test('Deve cadastrar o cliente CPF, retornar o codigo http 200 e os dados de cad
     expect($cadastroCPF->codigoHTTP)->toBe(200);
     expect($cadastroCPF->conteudo->id);
 });
-*/
+
 
 test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados do cliente.', function () {
+    $service = new GissOnline();
 
+    $update = $service->tomador([
+        'token'                        => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NjI3IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiNjc0OTk4NzI2NTMiLCJJUEFERFJFU1MiOiIxMC4yNi4xNi4xOTciLCJVSVBfSUQiOiI1MjhmOTJlMS0xZWM2LTQxNzgtOWExYy0yZGMwZTM5NjAwNDciLCJDQ1RPS0VOIjoiIiwibmJmIjoxNzA5MTEwNzk2LCJleHAiOjE3MDkxMzk2NTYsImlzcyI6Imh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiYXVkIjpbImh0dHA6Ly93d3cuY29kZWNpcGhlcnMuY29tIiwiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iXSwiQVBQX0lEIjoiMzg0OGFhMjctNmY2Yy0zYjUyLTMxN2MtZDE3MDA5ZDlhYmZkIiwiUEFSQU1fTE9HSU4iOiJbe1wiaWRcIjoyLFwidGlwb1wiOlwiQ29kQ2xpZW50ZVwiLFwiY2hhdmVcIjpcIjAwMDAyXCIsXCJ2YWxvclwiOlwiUHJlZmVpdHVyYSBkZSBNdXJpYcOpXCJ9XSIsIlBBUkFNX1BSSVYiOiJlbXByZXNhPTI1OTkwNiJ9.rTNqMUJowdaxZliK6-rgcLqbFhgDyTRhV9NFBn7ri0M',
+        'GISS_COD_MUNICIPIO_PRESTADOR' => '3143906',
+        'idTomador'                    => '291923',
+        'nomeFantasia'                 => 'Artigos para comercio',
+    ])->update();
+
+    expect($cadastroCPF->codigoHTTP)->toBe(200);
+    expect($cadastroCPF->conteudo->id);
 });
