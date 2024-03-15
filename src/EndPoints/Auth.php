@@ -17,9 +17,9 @@ class Auth
     public function __construct(array $data = [])
     {
         $this->service               = new GissOnline();
-        $this->username              = data_get($data, 'GISS_USERNAME', env('GISS_USERNAME'));
-        $this->password              = data_get($data, 'GISS_PASSWORD', env('GISS_PASSWORD'));
-        $this->codMunicipioprestador = data_get($data, 'GISS_COD_MUNICIPIO_PRESTADOR', env('GISS_COD_MUNICIPIO_PRESTADOR'));
+        $this->username              = env('GISS_USERNAME');
+        $this->password              = env('GISS_PASSWORD');
+        $this->codMunicipioprestador = env('GISS_COD_MUNICIPIO_PRESTADOR');
     }
 
     public function token()

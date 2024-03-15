@@ -67,7 +67,7 @@ class Tomador
     public function __construct(array $data)
     {
         $this->service            = new GissOnline();
-        $this->codMunicipio       = data_get($data, 'GISS_COD_MUNICIPIO_PRESTADOR', env('GISS_COD_MUNICIPIO_PRESTADOR'));
+        $this->codMunicipio       = env('GISS_COD_MUNICIPIO_PRESTADOR');
         $this->idEmpresa          = data_get($data, 'idEmpresa', '*');
         $this->token              = data_get($data, 'token', '*');
         $this->cnpjCpf            = data_get($data, 'cnpjCpf', '*');
