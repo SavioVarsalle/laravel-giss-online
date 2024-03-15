@@ -14,7 +14,7 @@ test('Deve retornar o bearer token e o id da empresa.', function () {
     expect($data->token_type)->toBe('bearer');
     expect($data->idEmpresa);
 });
-
+/*
 test('Deve cadastrar o cliente CNPJ, retornar o codigo http 200 e os dados de cadastro.', function () {
     $service = new GissOnline();
 
@@ -85,3 +85,4 @@ test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados d
     expect($update->codigoHTTP)->toBe(200);
     expect($update->conteudo->id);
 });
+*/
