@@ -14,7 +14,7 @@ class GissOnline
         $this->api = new Client();
     }
 
-    public function auth(array $data = [])
+    public function auth(array $data)
     {
         return new Auth($data);
     }

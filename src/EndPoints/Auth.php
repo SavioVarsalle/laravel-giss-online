@@ -14,12 +14,12 @@ class Auth
 
     private $codMunicipioprestador;
 
-    public function __construct(array $data = [])
+    public function __construct(array $data)
     {
         $this->service               = new GissOnline();
-        $this->username              = env('GISS_USERNAME');
-        $this->password              = env('GISS_PASSWORD');
-        $this->codMunicipioprestador = env('GISS_COD_MUNICIPIO_PRESTADOR');
+        $this->username              = data_get($data, 'giss_username');
+        $this->password              = data_get($data, 'giss_password');
+        $this->codMunicipioprestador = data_get($data, 'giss_cod_municipio');
     }
 
     public function token()

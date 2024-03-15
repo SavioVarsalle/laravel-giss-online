@@ -23,7 +23,7 @@ class Servico
     public function __construct(array $data)
     {
         $this->service      = new GissOnline();
-        $this->codMunicipio = env('GISS_COD_MUNICIPIO_PRESTADOR');
+        $this->codMunicipio = data_get($data, 'giss_cod_municipio', null);
         $this->token        = data_get($data, 'token', null);
         $this->idEmpresa    = data_get($data, 'idEmpresa', null);
         $this->dataServico  = data_get($data, 'dataServico', null);

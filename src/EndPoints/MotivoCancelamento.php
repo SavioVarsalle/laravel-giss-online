@@ -16,7 +16,7 @@ class MotivoCancelamento
     {
         $this->service      = new GissOnline();
         $this->token        = data_get($data, 'token');
-        $this->codMunicipio = env('GISS_COD_MUNICIPIO_PRESTADOR');
+        $this->codMunicipio = data_get($data, 'giss_cod_municipio');
     }
 
     public function list()

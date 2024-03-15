@@ -15,7 +15,7 @@ class Usuario
     public function __construct(array $data)
     {
         $this->service      = new GissOnline();
-        $this->codMunicipio = env('GISS_COD_MUNICIPIO_PRESTADOR');
+        $this->codMunicipio = data_get($data, 'giss_cod_municipio');
         $this->token        = data_get($data, 'token');
     }
 

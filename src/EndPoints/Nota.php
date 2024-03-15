@@ -68,7 +68,7 @@ class Nota
     {
         $this->service              = new GissOnline();
         $this->token                = data_get($data, 'token');
-        $this->codMunicipio         = env('GISS_COD_MUNICIPIO_PRESTADOR');
+        $this->codMunicipio         = data_get($data, 'giss_cod_municipio');
         $this->idEmpresa            = data_get($data, 'idEmpresa');
         $this->notaTipo             = data_get($data, 'notaTipo', 0);
         $this->tipoPrestador        = data_get($data, 'tipoPrestador');
