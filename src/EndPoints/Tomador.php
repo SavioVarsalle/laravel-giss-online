@@ -99,7 +99,9 @@ class Tomador
 
     public function get()
     {
-        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/tomador/{$this->codMunicipio}/{$this->idEmpresa}/tipo/1/cliente/2024-02-23?parametro={$this->cnpjCpf}", [
+        $today = now()->toDateString();
+
+        $response = $this->service->api->request('GET', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-empresa/api/cliente-fornecedor/tomador/{$this->codMunicipio}/{$this->idEmpresa}/tipo/1/cliente/{$today}?parametro={$this->cnpjCpf}", [
             'headers' => [
                 'Accept'          => 'application/json, text/plain, */*',
                 'Accept-Encoding' => 'gzip, deflate, br, zstd',
