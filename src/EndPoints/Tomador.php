@@ -292,7 +292,9 @@ class Tomador
                     'Accept'          => 'application/json, text/plain, */*',
                     'Accept-Encoding' => 'gzip, deflate, br, zstd',
                     'Authorization'   => 'Bearer ' . $this->token,
-                    'Content-Type'    => 'application/json;charset=UTF-8',
+                    'Content-Type'    => 'application/json',
+                    'Dnt'             => 1,
+                    'Priority'        => 'u=1, i',
                 ],
                 'json' => $json,
             ]);
