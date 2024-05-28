@@ -270,6 +270,7 @@ class Tomador
                 "apelido"           => $this->checkData(data_get($data->conteudo, 'apelido', '*'), $this->apelido),
                 "inscricaoEstadual" => $this->checkData(data_get($data->conteudo, 'inscricaoEstadual', '*'), $this->inscricaoEstadual),
                 "documento"         => $this->cnpjCpf,
+                "inscricaoMunicipal"=> $this->checkData(data_get($data->conteudo, 'inscricaoMunicipal', '*'), $this->inscricaoMunicipal),
                 "exterior"          => data_get($data->conteudo, 'exterior', '*'),
                 "tipoDocumento"     => data_get($data->conteudo, 'tipoDocumento', '*'),
                 "mei"               => $this->mei != data_get($data->conteudo, 'mei', '*') ? $this->mei : data_get($data->conteudo, 'mei', '*'),
