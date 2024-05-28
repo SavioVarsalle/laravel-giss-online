@@ -269,7 +269,7 @@ class Tomador
                 "razaoSocial"       => $this->checkData(data_get($data->conteudo, 'razaoSocial', '*'), $data->conteudo->razaoSocial),
                 "apelido"           => $this->checkData(data_get($data->conteudo, 'apelido', '*'), $this->apelido),
                 "inscricaoEstadual" => $this->checkData(data_get($data->conteudo, 'inscricaoEstadual', '*'), $this->inscricaoEstadual),
-                //"documento"         => $this->checkData(data_get($data->conteudo, 'documento', '*'), $this->cnpjCpf),
+                "documento"         => $this->cnpjCpf,
                 "exterior"          => data_get($data->conteudo, 'exterior', '*'),
                 "tipoDocumento"     => data_get($data->conteudo, 'tipoDocumento', '*'),
                 "mei"               => $this->mei != data_get($data->conteudo, 'mei', '*') ? $this->mei : data_get($data->conteudo, 'mei', '*'),
