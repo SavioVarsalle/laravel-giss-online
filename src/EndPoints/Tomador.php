@@ -261,7 +261,7 @@ class Tomador
 
             $json = [
                 "alterado"          => true,
-                "id"                => data_get($data->conteudo, 'id'),
+                "id"                => $this->idTomador,
                 "idCliente"         => data_get($data->conteudo, 'idCliente'),
                 "idEmpresa"         => data_get($data->conteudo, 'idEmpresa'),
                 "tipo"              => data_get($data->conteudo, 'tipo'),
