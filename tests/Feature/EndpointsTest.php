@@ -1,6 +1,7 @@
 <?php
 
 use SavioVarsalle\LaravelGissOnline\GissOnline;
+
 /*
 test('Deve retornar o bearer token e o id da empresa.', function () {
     $service = new GissOnline();
@@ -76,29 +77,29 @@ test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados d
     $service = new GissOnline();
 
     $update = $service->tomador([
-        "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NTI2IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiMTI4ODMxMDM2NjYiLCJJUEFERFJFU1MiOiIxMC4yNi41LjEyNCIsIlVJUF9JRCI6ImVmNjBiYTAyLTZlMjAtNDUyNS04Yjg2LTA3Y2U2ZDBhODgwZCIsIkNDVE9LRU4iOiIiLCJuYmYiOjE3MTY5MTg2OTIsImV4cCI6MTcxNjk0NzU1MiwiaXNzIjoiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iLCJhdWQiOlsiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iLCJodHRwOi8vd3d3LmNvZGVjaXBoZXJzLmNvbSJdLCJBUFBfSUQiOiIzODQ4YWEyNy02ZjZjLTNiNTItMzE3Yy1kMTcwMDlkOWFiZmQiLCJQQVJBTV9MT0dJTiI6Ilt7XCJpZFwiOjIsXCJ0aXBvXCI6XCJDb2RDbGllbnRlXCIsXCJjaGF2ZVwiOlwiMDAwMDJcIixcInZhbG9yXCI6XCJQcmVmZWl0dXJhIGRlIE11cmlhw6lcIn1dIiwiUEFSQU1fUFJJViI6ImVtcHJlc2E9MjY5MDgxIn0.1fGU4VN5CpkPNwoM4eEERTiYzhSmxRk6inw4hHCOT38",
-        "idTomador" => 327748,
-        "apelido" => "PREFEITURA MUNICIPAL DE MURIAE T" ,
-        "cnpjCpf" => "17947581000176" ,
-        "bairro" => "Centro" ,
-        "cep" => "36880002" ,
-        "cidade" => "Muriaé" ,
-        "complemento" => "-" ,
-        "estado" => "MG" ,
-        "idIbge" => "3143906" ,
-        "idUfIbge" => 31 ,
-        "logradouro" => "Avenida Maestro Sansao alterado" ,
-        "numero" => "1236512626" ,
-        "tipoLogradouro" => "Ave" ,
-        "exterior" => false ,
-        "idEmpresa" => 269081 ,
-        "nomeFantasia" => "PREFEITURA MUNICIPAL DE MURIAE" ,
-        "razaoSocial" => "PREFEITURA MUNICIPAL DE MURIAE" ,
-        "inscricaoEstadual" => "" ,
+        "token"              => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUSVBPTE9HSU4iOiJVc3VhcmlvU2VuaGEiLCJDT0RJR09fVVNVQVJJTyI6IjI4NTI2IiwiQVBQX0lEIChJTklDSUFMKSI6IjM4NDhhYTI3LTZmNmMtM2I1Mi0zMTdjLWQxNzAwOWQ5YWJmZCIsIkxPR0lOIjoiMTI4ODMxMDM2NjYiLCJJUEFERFJFU1MiOiIxMC4yNi41LjEyNCIsIlVJUF9JRCI6ImVmNjBiYTAyLTZlMjAtNDUyNS04Yjg2LTA3Y2U2ZDBhODgwZCIsIkNDVE9LRU4iOiIiLCJuYmYiOjE3MTY5MTg2OTIsImV4cCI6MTcxNjk0NzU1MiwiaXNzIjoiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iLCJhdWQiOlsiaHR0cDovL3d3dy5jb2RlY2lwaGVycy5jb20iLCJodHRwOi8vd3d3LmNvZGVjaXBoZXJzLmNvbSJdLCJBUFBfSUQiOiIzODQ4YWEyNy02ZjZjLTNiNTItMzE3Yy1kMTcwMDlkOWFiZmQiLCJQQVJBTV9MT0dJTiI6Ilt7XCJpZFwiOjIsXCJ0aXBvXCI6XCJDb2RDbGllbnRlXCIsXCJjaGF2ZVwiOlwiMDAwMDJcIixcInZhbG9yXCI6XCJQcmVmZWl0dXJhIGRlIE11cmlhw6lcIn1dIiwiUEFSQU1fUFJJViI6ImVtcHJlc2E9MjY5MDgxIn0.1fGU4VN5CpkPNwoM4eEERTiYzhSmxRk6inw4hHCOT38",
+        "idTomador"          => 327748,
+        "apelido"            => "PREFEITURA MUNICIPAL DE MURIAE T" ,
+        "cnpjCpf"            => "17947581000176" ,
+        "bairro"             => "Centro" ,
+        "cep"                => "36880002" ,
+        "cidade"             => "Muriaé" ,
+        "complemento"        => "-" ,
+        "estado"             => "MG" ,
+        "idIbge"             => "3143906" ,
+        "idUfIbge"           => 31 ,
+        "logradouro"         => "Avenida Maestro Sansao alterado" ,
+        "numero"             => "1236512626" ,
+        "tipoLogradouro"     => "Ave" ,
+        "exterior"           => false ,
+        "idEmpresa"          => 269081 ,
+        "nomeFantasia"       => "PREFEITURA MUNICIPAL DE MURIAE" ,
+        "razaoSocial"        => "PREFEITURA MUNICIPAL DE MURIAE" ,
+        "inscricaoEstadual"  => "" ,
         "inscricaoMunicipal" => "300866" ,
-        "codigoArea" => "32" ,
-        "telefone" => "37291020" ,
-        "mei" => false ,
+        "codigoArea"         => "32" ,
+        "telefone"           => "37291020" ,
+        "mei"                => false ,
         "giss_cod_municipio" => "3143906",
     ])->update();
     var_dump($update);
