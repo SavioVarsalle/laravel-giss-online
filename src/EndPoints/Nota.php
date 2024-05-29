@@ -64,37 +64,43 @@ class Nota
 
     private $rps;
 
+    private $descontoCondicionado;
+
+    private $descontoIncondicionado;
+
     public function __construct(array $data)
     {
-        $this->service              = new GissOnline();
-        $this->token                = data_get($data, 'token');
-        $this->codMunicipio         = data_get($data, 'giss_cod_municipio');
-        $this->idEmpresa            = data_get($data, 'idEmpresa');
-        $this->notaTipo             = data_get($data, 'notaTipo', 0);
-        $this->tipoPrestador        = data_get($data, 'tipoPrestador');
-        $this->tipoEmpresa          = data_get($data, 'tipoEmpresa');
-        $this->idTomador            = data_get($data, 'idTomador');
-        $this->tipoTomador          = data_get($data, 'tipoTomador');
-        $this->idServico            = data_get($data, 'idServico');
-        $this->idAtividade          = data_get($data, 'idAtividade');
-        $this->dataCompetencia      = data_get($data, 'dataCompetencia');
-        $this->discriminacaoServico = data_get($data, 'discriminacaoServico');
-        $this->outrasRetencoes      = data_get($data, 'outrasRetencoes', 0);
-        $this->valorServico         = data_get($data, 'valorServico');
-        $this->exportacao           = data_get($data, 'exportacao');
-        $this->issRetido            = data_get($data, 'issRetido');
-        $this->municipioPrestacao   = data_get($data, 'municipioPrestacao');
-        $this->aliquota             = data_get($data, 'aliquota');
-        $this->pis                  = data_get($data, 'pis', 0);
-        $this->cofins               = data_get($data, 'cofins', 0);
-        $this->ir                   = data_get($data, 'ir', 0);
-        $this->inss                 = data_get($data, 'inss', 0);
-        $this->csll                 = data_get($data, 'csll', 0);
-        $this->notaNumero           = data_get($data, 'notaNumero');
-        $this->idMotivoCancelamento = data_get($data, 'idMotivoCancelamento');
-        $this->idNota               = data_get($data, 'idNota');
-        $this->serie                = data_get($data, 'serie');
-        $this->rps                  = data_get($data, 'rps');
+        $this->service                = new GissOnline();
+        $this->token                  = data_get($data, 'token');
+        $this->codMunicipio           = data_get($data, 'giss_cod_municipio');
+        $this->idEmpresa              = data_get($data, 'idEmpresa');
+        $this->notaTipo               = data_get($data, 'notaTipo', 0);
+        $this->tipoPrestador          = data_get($data, 'tipoPrestador');
+        $this->tipoEmpresa            = data_get($data, 'tipoEmpresa');
+        $this->idTomador              = data_get($data, 'idTomador');
+        $this->tipoTomador            = data_get($data, 'tipoTomador');
+        $this->idServico              = data_get($data, 'idServico');
+        $this->idAtividade            = data_get($data, 'idAtividade');
+        $this->dataCompetencia        = data_get($data, 'dataCompetencia');
+        $this->discriminacaoServico   = data_get($data, 'discriminacaoServico');
+        $this->outrasRetencoes        = data_get($data, 'outrasRetencoes', 0);
+        $this->valorServico           = data_get($data, 'valorServico');
+        $this->exportacao             = data_get($data, 'exportacao');
+        $this->issRetido              = data_get($data, 'issRetido');
+        $this->municipioPrestacao     = data_get($data, 'municipioPrestacao');
+        $this->aliquota               = data_get($data, 'aliquota');
+        $this->pis                    = data_get($data, 'pis', 0);
+        $this->cofins                 = data_get($data, 'cofins', 0);
+        $this->ir                     = data_get($data, 'ir', 0);
+        $this->inss                   = data_get($data, 'inss', 0);
+        $this->csll                   = data_get($data, 'csll', 0);
+        $this->notaNumero             = data_get($data, 'notaNumero');
+        $this->idMotivoCancelamento   = data_get($data, 'idMotivoCancelamento');
+        $this->idNota                 = data_get($data, 'idNota');
+        $this->serie                  = data_get($data, 'serie');
+        $this->rps                    = data_get($data, 'rps');
+        $this->descontoCondicionado   = data_get($data, 'descontoCondicionado', 0);
+        $this->descontoIncondicionado = data_get($data, 'descontoIncondicionado', 0);
     }
 
     public function emitir()
@@ -107,30 +113,32 @@ class Nota
                 'Content-Type'    => 'application/json;charset=UTF-8',
             ],
             'json' => [
-                'idCliente'            => $this->codMunicipio,
-                'idPrestador'          => $this->idEmpresa,
-                'notaTipo'             => $this->notaTipo,
-                'tipoPrestador'        => $this->tipoPrestador,
-                'tipoEmpresa'          => $this->tipoEmpresa,
-                'idTomador'            => $this->idTomador,
-                'tipoTomador'          => $this->tipoTomador,
-                'idServico'            => $this->idServico,
-                'idAtividade'          => $this->idAtividade,
-                'competencia'          => $this->dataCompetencia,
-                'discriminacaoServico' => $this->discriminacaoServico,
-                'outrasRetencoes'      => $this->outrasRetencoes,
-                'valorServico'         => $this->valorServico,
-                'exportacao'           => $this->exportacao,
-                'issRetido'            => $this->issRetido,
-                'municipioPrestacao'   => $this->municipioPrestacao,
-                'aliquota'             => $this->aliquota,
-                'pis'                  => $this->pis,
-                'cofins'               => $this->cofins,
-                'ir'                   => $this->ir,
-                'inss'                 => $this->inss,
-                'csll'                 => $this->csll,
-                'serie'                => $this->serie,
-                'rps'                  => $this->rps,
+                'idCliente'              => $this->codMunicipio,
+                'idPrestador'            => $this->idEmpresa,
+                'notaTipo'               => $this->notaTipo,
+                'tipoPrestador'          => $this->tipoPrestador,
+                'tipoEmpresa'            => $this->tipoEmpresa,
+                'idTomador'              => $this->idTomador,
+                'tipoTomador'            => $this->tipoTomador,
+                'idServico'              => $this->idServico,
+                'idAtividade'            => $this->idAtividade,
+                'competencia'            => $this->dataCompetencia,
+                'discriminacaoServico'   => $this->discriminacaoServico,
+                'outrasRetencoes'        => $this->outrasRetencoes,
+                'valorServico'           => $this->valorServico,
+                'exportacao'             => $this->exportacao,
+                'descontoCondicionado'   => $this->descontoCondicionado,
+                'descontoIncondicionado' => $this->descontoIncondicionado,
+                'issRetido'              => $this->issRetido,
+                'municipioPrestacao'     => $this->municipioPrestacao,
+                'aliquota'               => $this->aliquota,
+                'pis'                    => $this->pis,
+                'cofins'                 => $this->cofins,
+                'ir'                     => $this->ir,
+                'inss'                   => $this->inss,
+                'csll'                   => $this->csll,
+                'serie'                  => $this->serie,
+                'rps'                    => $this->rps,
             ],
         ]);
 
