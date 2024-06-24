@@ -68,6 +68,10 @@ class Nota
 
     private $descontoIncondicionado;
 
+    private $codigoArt;
+
+    private $codigoObra;
+
     public function __construct(array $data)
     {
         $this->service                = new GissOnline();
@@ -101,10 +105,47 @@ class Nota
         $this->rps                    = data_get($data, 'rps');
         $this->descontoCondicionado   = data_get($data, 'descontoCondicionado', 0);
         $this->descontoIncondicionado = data_get($data, 'descontoIncondicionado', 0);
+        $this->codigoArt              = data_get($data, 'codigoArt', '*');
+        $this->codigoObra             = data_get($data, 'codigoObra', '*');
     }
 
     public function emitir()
     {
+        $json = [
+            'idCliente'              => $this->codMunicipio,
+            'idPrestador'            => $this->idEmpresa,
+            'notaTipo'               => $this->notaTipo,
+            'tipoPrestador'          => $this->tipoPrestador,
+            'tipoEmpresa'            => $this->tipoEmpresa,
+            'idTomador'              => $this->idTomador,
+            'tipoTomador'            => $this->tipoTomador,
+            'idServico'              => $this->idServico,
+            'idAtividade'            => $this->idAtividade,
+            'competencia'            => $this->dataCompetencia,
+            'discriminacaoServico'   => $this->discriminacaoServico,
+            'outrasRetencoes'        => $this->outrasRetencoes,
+            'valorServico'           => $this->valorServico,
+            'exportacao'             => $this->exportacao,
+            'descontoCondicionado'   => $this->descontoCondicionado,
+            'descontoIncondicionado' => $this->descontoIncondicionado,
+            'issRetido'              => $this->issRetido,
+            'municipioPrestacao'     => $this->municipioPrestacao,
+            'aliquota'               => $this->aliquota,
+            'pis'                    => $this->pis,
+            'cofins'                 => $this->cofins,
+            'ir'                     => $this->ir,
+            'inss'                   => $this->inss,
+            'csll'                   => $this->csll,
+            'serie'                  => $this->serie,
+            'rps'                    => $this->rps,
+            'codigoArt'              => $this->codigoArt,
+            'codigoObra'             => $this->codigoObra,
+        ];
+        
+        $json = array_filter($json, function ($value) {
+            return $value != '*';
+        });
+
         $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipio}.giss.com.br/service-declaracao/api/nota/emitir", [
             'headers' => [
                 'Accept'          => 'application/json, text/plain, */*',
@@ -112,34 +153,7 @@ class Nota
                 'Authorization'   => 'Bearer ' . $this->token,
                 'Content-Type'    => 'application/json;charset=UTF-8',
             ],
-            'json' => [
-                'idCliente'              => $this->codMunicipio,
-                'idPrestador'            => $this->idEmpresa,
-                'notaTipo'               => $this->notaTipo,
-                'tipoPrestador'          => $this->tipoPrestador,
-                'tipoEmpresa'            => $this->tipoEmpresa,
-                'idTomador'              => $this->idTomador,
-                'tipoTomador'            => $this->tipoTomador,
-                'idServico'              => $this->idServico,
-                'idAtividade'            => $this->idAtividade,
-                'competencia'            => $this->dataCompetencia,
-                'discriminacaoServico'   => $this->discriminacaoServico,
-                'outrasRetencoes'        => $this->outrasRetencoes,
-                'valorServico'           => $this->valorServico,
-                'exportacao'             => $this->exportacao,
-                'descontoCondicionado'   => $this->descontoCondicionado,
-                'descontoIncondicionado' => $this->descontoIncondicionado,
-                'issRetido'              => $this->issRetido,
-                'municipioPrestacao'     => $this->municipioPrestacao,
-                'aliquota'               => $this->aliquota,
-                'pis'                    => $this->pis,
-                'cofins'                 => $this->cofins,
-                'ir'                     => $this->ir,
-                'inss'                   => $this->inss,
-                'csll'                   => $this->csll,
-                'serie'                  => $this->serie,
-                'rps'                    => $this->rps,
-            ],
+            'json' => $json,
         ]);
 
         return json_decode($response->getBody()->getContents());

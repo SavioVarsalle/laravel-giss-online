@@ -93,6 +93,7 @@ test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados d
         "tipoLogradouro"     => "Ave" ,
         "exterior"           => false ,
         "idEmpresa"          => 269081 ,
+        "descontoIncondicionado"
         "nomeFantasia"       => "PREFEITURA MUNICIPAL DE MURIAE" ,
         "razaoSocial"        => "PREFEITURA MUNICIPAL DE MURIAE" ,
         "inscricaoEstadual"  => "" ,
