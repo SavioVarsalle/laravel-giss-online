@@ -55,7 +55,7 @@ class Auth
         ]);
 
         $permission = json_decode($response->getBody()->getContents());
-
+       
         $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipioprestador}.giss.com.br/service-empresa/api/login/token", [
             'headers' => [
                 'Content-Type'    => 'application/x-www-form-urlencoded',
@@ -66,7 +66,7 @@ class Auth
                 'Param_user'      => 'CodCliente',
                 'Origin'          => 'https://muriae.giss.com.br',
                 'Referer'         => 'https://muriae.giss.com.br/',
-                'Param_login'     => (int) $permission->conteudo->empresas[0]->clienteReferencia->sistemaIntegracao,
+                'Param_login'     => (int) $permission->conteudo->empresas[0]->clienteReferencia,
                 'Param_priv'      => 'empresa=' . $permission->conteudo->empresas[0]->idEmpresa,
                 'Codigo_usuario'  => $permission->conteudo->codigoUsuario,
             ],
