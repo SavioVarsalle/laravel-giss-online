@@ -2,20 +2,19 @@
 
 use SavioVarsalle\LaravelGissOnline\GissOnline;
 
-/*
 test('Deve retornar o bearer token e o id da empresa.', function () {
     $service = new GissOnline();
 
     $data = $service->auth([
         'giss_cod_municipio' => 3143906,
-        'giss_username'      => "12883103666",
-        'giss_password'      => "Loja123@",
+        'giss_username'      => "xxxx",
+        'giss_password'      => "xxxxx",
     ])->token();
     var_dump($data);
     expect($data->token_type)->toBe('bearer');
     expect($data->idEmpresa);
 });
-
+/*
 test('Deve cadastrar o cliente CNPJ, retornar o codigo http 200 e os dados de cadastro.', function () {
     $service = new GissOnline();
 
@@ -72,7 +71,7 @@ test('Deve cadastrar o cliente CPF, retornar o codigo http 200 e os dados de cad
     expect($cadastroCPF->codigoHTTP)->toBe(200);
     expect($cadastroCPF->conteudo->id);
 });
-*/
+
 test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados do cliente.', function () {
     $service = new GissOnline();
 
@@ -107,3 +106,4 @@ test('Deve editar o cadastro do cliente, retornar o codigo http 200 e os dados d
     expect($update->codigoHTTP)->toBe(200);
     expect($update->conteudo->id);
 });
+*/

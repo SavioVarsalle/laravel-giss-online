@@ -66,7 +66,7 @@ class Auth
                 'Param_user'      => 'CodCliente',
                 'Origin'          => 'https://muriae.giss.com.br',
                 'Referer'         => 'https://muriae.giss.com.br/',
-                'Param_login'     => $permission->conteudo->empresas[0]->clienteReferencia->sistemaIntegracao,
+                'Param_login'     => (int) $permission->conteudo->empresas[0]->clienteReferencia->sistemaIntegracao,
                 'Param_priv'      => 'empresa=' . $permission->conteudo->empresas[0]->idEmpresa,
                 'Codigo_usuario'  => $permission->conteudo->codigoUsuario,
             ],
