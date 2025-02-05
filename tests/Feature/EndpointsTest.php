@@ -7,8 +7,9 @@ test('Deve retornar o bearer token e o id da empresa.', function () {
 
     $data = $service->auth([
         'giss_cod_municipio' => 3143906,
-        'giss_username'      => "xxx",
-        'giss_password'      => "xxx",
+        'giss_username'      => "08691752629",
+        'giss_password'      => "49112924Dd*",
+        'cnpj'               => "49112924000179",
     ])->token();
     var_dump($data);
     expect($data->token_type)->toBe('bearer');

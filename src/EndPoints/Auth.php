@@ -14,12 +14,15 @@ class Auth
 
     private $codMunicipioprestador;
 
+    private $cnpj;
+
     public function __construct(array $data)
     {
         $this->service               = new GissOnline();
         $this->username              = data_get($data, 'giss_username');
         $this->password              = data_get($data, 'giss_password');
         $this->codMunicipioprestador = data_get($data, 'giss_cod_municipio');
+        $this->cnpj                  = data_get($data, 'cnpj');
     }
 
     public function token()
@@ -55,7 +58,9 @@ class Auth
         ]);
 
         $permission = json_decode($response->getBody()->getContents());
-       
+
+        $empresa = collect($permission->conteudo->empresas)->firstWhere('documento', $this->cnpj);
+
         $response = $this->service->api->request('POST', "https://gissv2-{$this->codMunicipioprestador}.giss.com.br/service-empresa/api/login/token", [
             'headers' => [
                 'Content-Type'    => 'application/x-www-form-urlencoded',
@@ -66,8 +71,8 @@ class Auth
                 'Param_user'      => 'CodCliente',
                 'Origin'          => 'https://muriae.giss.com.br',
                 'Referer'         => 'https://muriae.giss.com.br/',
-                'Param_login'     => (int) $permission->conteudo->empresas[0]->clienteReferencia,
-                'Param_priv'      => 'empresa=' . $permission->conteudo->empresas[0]->idEmpresa,
+                'Param_login'     => (int) $empresa->clienteReferencia,
+                'Param_priv'      => 'empresa=' . $empresa->idEmpresa,
                 'Codigo_usuario'  => $permission->conteudo->codigoUsuario,
             ],
             'form_params' => [
@@ -77,7 +82,7 @@ class Auth
         ]);
 
         $data            = json_decode($response->getBody()->getContents());
-        $data->idEmpresa = $permission->conteudo->empresas[0]->idEmpresa;
+        $data->idEmpresa = $empresa->idEmpresa;
 
         return $data;
     }

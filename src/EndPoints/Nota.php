@@ -141,7 +141,7 @@ class Nota
             'codigoArt'              => $this->codigoArt,
             'codigoObra'             => $this->codigoObra,
         ];
-        
+
         $json = array_filter($json, function ($value) {
             return $value != '*';
         });
